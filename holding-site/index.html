@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Burning Orange</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">   
+  </head>
+  <script>
+    document
+      .getElementById("email-form")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const button = e.target.querySelector("button");
+
+        button.textContent = "Sending...";
+
+        try {
+          await fetch(
+            "https://a.klaviyo.com/api/v2/list/YOUR_LIST_ID/subscribe",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                api_key: "YOUR_PUBLIC_API_KEY",
+                profiles: [{ email: email }],
+              }),
+            },
+          );
+
+          button.textContent = "Subscribed!";
+          document.getElementById("email").value = "";
+        } catch (error) {
+          button.textContent = "Try again";
+        }
+      });
+  </script>
+  <body>
+    <div class="content-section">
+      <div class="icon-container">
+        <img src="assets/icon2.png" alt="">
+      </div>
+      <div class="quote-container">
+        We create spaces, objects, and moments that honour the golden warmth of
+        being outdoors.
+      </div>
+      <div class="newsletter-signup">
+        <div class="email-signup">
+          <form id="email-form" class="email-signup">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email Address"
+              required
+            />
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+        <div class="signup-notice">
+          Join the Burning Orange mailing list. We’ll send you the first look at new collections, and styling advice.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
