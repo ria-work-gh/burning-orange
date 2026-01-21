@@ -140,7 +140,7 @@ button:hover {
   color: var(--color-base);
 }
 
-img {
+.quote-container img {
   width: 100%;
 }
 
@@ -149,6 +149,7 @@ img {
   max-width: 40ch;
   line-height: 120%;
   text-wrap: balance;
+  font-size: var(--font-size-base);
 }
 
 .icon-container {
@@ -157,5 +158,5 @@ img {
 
 
 .icon-container img {
-  width: 10rem;
+  width: 15rem;
 }
