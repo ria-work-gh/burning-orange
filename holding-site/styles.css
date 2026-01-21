@@ -12,8 +12,8 @@
   --font-size-base: 14px;
   --font-color: #fdfdf4;
   --color-base: #fdfdf4;
-  --color-highlight: #e6815b;
-  --color-pressed: #c47459;
+  --color-highlight: #EEE8DC;
+  --color-pressed: #E6815B;
 }
 
 @media (max-width: 768px) {
@@ -104,14 +104,8 @@ body {
   max-width: 100%;
 }
 
-.email-signup:hover {
-  background-color: var(--color-highlight);
-}
 
-.email-signup:hover input,
-.email-signup:hover button {
-  color: var(--font-color);
-}
+
 
 #email-form {
   display: flex;
@@ -131,10 +125,6 @@ input:focus {
   outline: none;
 }
 
-.email-signup:hover input::placeholder {
-  color: var(--font-color);
-}
-
 button {
   font-family: "lit-text";
   font-size: var(--font-size-base);
@@ -142,15 +132,16 @@ button {
   border: none;
   letter-spacing: 0.1em;
   background-color: transparent;
-  transition: background-color 200ms;
+  transition: all 200ms;
 }
 
 button:hover {
   background-color: var(--color-pressed);
+  color: var(--color-base);
 }
 
 img {
-  width: 90%;
+  width: 100%;
 }
 
 .signup-notice {
@@ -162,4 +153,9 @@ img {
 
 .icon-container {
   text-align: center;
+}
+
+
+.icon-container img {
+  width: 10rem;
 }
