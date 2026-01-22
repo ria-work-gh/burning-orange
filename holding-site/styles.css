@@ -153,6 +153,7 @@ button:hover {
 }
 
 .icon-container {
+  padding: 16px;
   text-align: center;
 }
 
