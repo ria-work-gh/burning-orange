@@ -43,20 +43,46 @@
           button.textContent = "Sending...";
 
           try {
-            await fetch(
-              "https://a.klaviyo.com/api/v2/list/TMUbkZ/subscribe",
+            const response = await fetch(
+              "https://a.klaviyo.com/client/subscriptions/?company_id=X7Fd3r",
               {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                  "Content-Type": "application/json",
+                  "revision": "2024-02-15"
+                },
                 body: JSON.stringify({
-                  api_key: "X7Fd3r",
-                  profiles: [{ email: email }],
+                  data: {
+                    type: "subscription",
+                    attributes: {
+                      profile: {
+                        data: {
+                          type: "profile",
+                          attributes: {
+                            email: email
+                          }
+                        }
+                      }
+                    },
+                    relationships: {
+                      list: {
+                        data: {
+                          type: "list",
+                          id: "TMUbkZ"
+                        }
+                      }
+                    }
+                  }
                 }),
               },
             );
 
-            button.textContent = "Subscribed!";
-            document.getElementById("email").value = "";
+            if (response.ok || response.status === 202) {
+              button.textContent = "Subscribed!";
+              document.getElementById("email").value = "";
+            } else {
+              button.textContent = "Try again";
+            }
           } catch (error) {
             button.textContent = "Try again";
           }
