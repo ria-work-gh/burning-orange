@@ -66,6 +66,7 @@ body {
   display: flex;
   color: var(--font-color);
   font-family: "lit-text";
+  background-color: #C96A3A;
 }
 
 .content-section {

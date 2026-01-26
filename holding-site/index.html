@@ -7,36 +7,6 @@
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="./assets/favicon.png" type="image/x-icon">   
   </head>
-  <script>
-    document
-      .getElementById("email-form")
-      .addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const button = e.target.querySelector("button");
-
-        button.textContent = "Sending...";
-
-        try {
-          await fetch(
-            "https://a.klaviyo.com/api/v2/list/YOUR_LIST_ID/subscribe",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                api_key: "YOUR_PUBLIC_API_KEY",
-                profiles: [{ email: email }],
-              }),
-            },
-          );
-
-          button.textContent = "Subscribed!";
-          document.getElementById("email").value = "";
-        } catch (error) {
-          button.textContent = "Try again";
-        }
-      });
-  </script>
   <body>
     <div class="content-section">
       <div class="icon-container">
@@ -62,5 +32,35 @@
         </div>
       </div>
     </div>
+    <script>
+      document
+        .getElementById("email-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const button = e.target.querySelector("button");
+
+          button.textContent = "Sending...";
+
+          try {
+            await fetch(
+              "https://a.klaviyo.com/api/v2/list/YOUR_LIST_ID/subscribe",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  api_key: "YOUR_PUBLIC_API_KEY",
+                  profiles: [{ email: email }],
+                }),
+              },
+            );
+
+            button.textContent = "Subscribed!";
+            document.getElementById("email").value = "";
+          } catch (error) {
+            button.textContent = "Try again";
+          }
+        });
+    </script>
   </body>
 </html>
