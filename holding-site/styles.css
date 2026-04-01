@@ -134,6 +134,7 @@ button {
   letter-spacing: 0.1em;
   background-color: transparent;
   transition: all 200ms;
+  color: black;
 }
 
 button:hover {
